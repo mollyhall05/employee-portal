@@ -24,8 +24,8 @@ This project is a **web-based Employee Portal** designed to manage employees, le
 ## Setup & Installation
 ### 1. Clone the repository
 ```sh
-git clone https://github.com/yourusername/employee-portal.git
-cd employee-portal
+git clone https://github.com/mollyhall05/SFEEmployeePortal.git
+cd SFEEmployeePortal
 ```
 ### 2. Setup and start the backend (Node.js and Express)
 ```sh
