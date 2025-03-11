@@ -21,3 +21,22 @@ This project is a **web-based Employee Portal** designed to manage employees, le
 - **Authentication:** JWT-based authentication
 - **Deployment:** Docker, AWS/GCP (optional)
 
+## Setup & Installation
+### 1. Clone the repository
+```sh
+git clone https://github.com/yourusername/employee-portal.git
+cd employee-portal
+```
+### 2. Setup and start the backend (Node.js and Express)
+```sh
+cd backend
+npm install
+npm start
+```
+### 3. Setup and start the frontend (React)
+```sh
+cd ../frontend
+npm install
+npm run dev
+```
+The app should be available at http://localhost:5173
