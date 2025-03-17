@@ -1,14 +1,21 @@
-# Employee Portal Web Application
+# Employee Portal 🚀
 
-## Overview
+This is a simple **Employee Portal** built with **React (Vite)**. It includes a login page and an employee dashboard where users can view their work schedule, submit leave requests, and track expenses.
 
-This project is a **web-based Employee Portal** designed to manage employees, leave requests, work schedules, expenses, notifications, and messaging.
+## **🛠️ Installation & Setup**
 
-## Features
+### 1. Clone the Repository
+```sh
+git clone https://github.com/mollyhall05/employee-portal.git
+cd employee-portal
+```
 
-- **Employee Management:** View and update employee information.
-- **Work Scheduling:** Track and manage work shifts.
-- **Leave Requests:** Employees can submit annual leave requests, and managers can approve or deny them.
-- **Expense Tracking:** Employees can submit expenses, and management can review/approve/deny them.
-- **Notifications:** Managers can post notifications, which employees can view in their portal.
-- **User Roles:** Different roles include **FDM Consultant, FDM Management Staff, System Admin, and Client and Business Partners**.
+### 2. Install dependencies
+```sh
+npm install
+```
+
+### 3. Run the development server
+```sh
+npm run dev
+```
