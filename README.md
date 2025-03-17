@@ -13,12 +13,13 @@ cd employee-portal
 ### 2. Install dependencies
 ```sh
 npm install
+npm install react-router-dom
 ```
 
 ### 3. Run the development server
 ```sh
 npm run dev
-npm install react-router-dom
+
 
 ```
 
