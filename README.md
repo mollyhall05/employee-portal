@@ -19,3 +19,7 @@ npm install
 ```sh
 npm run dev
 ```
+
+**Login credentials**
+example@example.com
+password
