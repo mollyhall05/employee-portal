@@ -21,5 +21,7 @@ npm run dev
 ```
 
 **Login credentials**
-example@example.com
-password
+
+Email: example@example.com
+
+Password: password
