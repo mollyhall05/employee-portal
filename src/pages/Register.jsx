@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
-
 function RegisterPage() {
 	const navigate = useNavigate();
 	// State to store form input values
@@ -55,15 +54,14 @@ function RegisterPage() {
 		// If either email or username already exists, clear the fields and display an error
 		if (!emailSnapshot.empty || !usernameSnapshot.empty||!numberSnapshot.empty) {
 			setError("Username, Phone number or Email already exists!");
-			setFormData({ name:"",username: "", email: "",phone_number:"", password: "" });
+			setFormData({name:"",username: "", email: "",phone_number:"", password: "" });
 			return;
 		}
 
 		try {
 			await addDoc(employeesRef, formData);
-			setFormData({ name:"",username: "", email: "",phone_number:"", password: "" });
 			alert("Sign up successful!");
-			navigate("/"); // Ensure your route for '/login' is correctly set up
+			navigate("/"); // Ensure your route for '/login' is correctly set up and
 		} catch (error) {
 			console.error("Error during sign up:", error);
 			setError("There was an error during sign up. Please try again.");
