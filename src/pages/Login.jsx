@@ -26,7 +26,8 @@ function Login() {
 		if (!querySnapshot.empty) {
 			// Found a matching user; for each match (ideally one), store user info in local storage
 			querySnapshot.forEach((doc) => {
-				localStorage.setItem("user", JSON.stringify(doc.data()));
+				console.log(doc.id);
+				localStorage.setItem("user", JSON.stringify({...doc.data(),id:doc.id}));
 			});
 			navigate("/consultant-dashboard");
 		} else {

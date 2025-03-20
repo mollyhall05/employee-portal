@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
-
 function RegisterPage() {
 	const navigate = useNavigate();
 	// State to store form input values
 	const [formData, setFormData] = useState({
+		name:"",
 		username: "",
 		email: "",
+		phone_number:"",
 		password: "",
 	});
 	// State for error messages
@@ -43,17 +44,24 @@ function RegisterPage() {
 		);
 		const usernameSnapshot = await getDocs(usernameQuery);
 
+		const numberQuery = query(
+			employeesRef,
+			where("phone_number", "==", formData.phone_number)
+		);
+		const numberSnapshot = await getDocs(numberQuery);
+
+
 		// If either email or username already exists, clear the fields and display an error
-		if (!emailSnapshot.empty || !usernameSnapshot.empty) {
-			setError("Username or Email already exists!");
-			setFormData({ username: "", email: "", password: "" });
+		if (!emailSnapshot.empty || !usernameSnapshot.empty||!numberSnapshot.empty) {
+			setError("Username, Phone number or Email already exists!");
+			setFormData({name:"",username: "", email: "",phone_number:"", password: "" });
 			return;
 		}
 
 		try {
 			await addDoc(employeesRef, formData);
 			alert("Sign up successful!");
-			navigate("/"); // Ensure your route for '/login' is correctly set up
+			navigate("/"); // Ensure your route for '/login' is correctly set up and
 		} catch (error) {
 			console.error("Error during sign up:", error);
 			setError("There was an error during sign up. Please try again.");
@@ -65,6 +73,17 @@ function RegisterPage() {
 			<h2>Register</h2>
 			{error && <p style={{ color: "red" }}>{error}</p>}
 			<form onSubmit={handleSubmit}>
+				<div className="form-group">
+					<label htmlFor="name">Full Name:</label>
+					<input
+						type="name"
+						id="name"
+						name="name"
+						value={formData.name}
+						onChange={handleInputChange}
+						required
+					/>
+				</div>
 				<div className="form-group">
 					<label htmlFor="username">Username:</label>
 					<input
@@ -84,6 +103,18 @@ function RegisterPage() {
 						id="email"
 						name="email"
 						value={formData.email}
+						onChange={handleInputChange}
+						required
+					/>
+				</div>
+
+				<div className="form-group">
+					<label htmlFor="phone_number">Phone Number:</label>
+					<input
+						type="phone_number"
+						id="phone_number"
+						name="phone_number"
+						value={formData.phone_number}
 						onChange={handleInputChange}
 						required
 					/>
