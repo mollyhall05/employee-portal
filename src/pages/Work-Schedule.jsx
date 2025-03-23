@@ -28,15 +28,15 @@ function WorkSchedule() {
 
         let eventselect = prompt("What would you like to do here?");
 
-        if (eventselect == "delete")
+        if (eventselect === "delete")
         {
             deleteEvent(selectedEvent);
         }
-        else if (eventselect == "rename" && selectedEvent.event.extendedProps.id)
+        else if (eventselect === "rename" && selectedEvent.event.extendedProps.id)
         {
             renameEvent(selectedEvent);
         }
-        else if (eventselect == "view" && selectedEvent.event.extendedProps.id)
+        else if (eventselect === "view" && selectedEvent.event.extendedProps.id)
         {
             viewEvent(selectedEvent);
         }
@@ -80,9 +80,9 @@ function WorkSchedule() {
                 plugins = {[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 headerToolbar={{
-                    start: 'timeGridDay, timeGridWeek, dayGridMonth',
+                    start: 'timeGridDay timeGridWeek dayGridMonth',
                     center: 'title',
-                    end: 'today prev, next'
+                    end: 'today prev next'
                 }}
                 events = {events}
                 dateClick = {inputEvent}

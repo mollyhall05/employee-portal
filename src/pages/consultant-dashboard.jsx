@@ -14,7 +14,7 @@ function Dashboard() {
           <h2>Employee Dashboard</h2>
           <p>Welcome! Here are your options:</p>
 
-          <button onClick={() => alert("Viewing Work Schedule")}>📅 Work Schedule</button>
+          <button onClick={() => navigate("/work-schedule")}>📅 Work Schedule</button>
           <button onClick={() => alert("Submitting Leave Request")}>📝 Submit Leave</button>
           <button onClick={() => alert("Submitting Expense")}>💰 Submit Expense</button>
           <button onClick={() => alert("Viewing Notifications")}>🔔 Notifications</button>

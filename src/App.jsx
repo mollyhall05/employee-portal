@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import ConsultantDashboard from './pages/consultant-dashboard'
 import WorkSchedule from './pages/Work-Schedule';
 import Register from "./pages/Register.jsx";
+import UpdateInfo from "./pages/Update-Info.jsx";
 
 function App() {
     const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/" element={<Login />} />
                 <Route path="/consultant-dashboard" element={<ConsultantDashboard />} />
                 <Route path="/Register" element={<Register />}/>
+                <Route path="/update-info" element={<UpdateInfo />} />
                 <Route path="/work-schedule" element={<WorkSchedule />}/>
             </Routes>
         </Router>
