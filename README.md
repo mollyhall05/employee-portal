@@ -20,7 +20,7 @@ npm install
 npm run dev
 npm install react-router-dom
 npm install firebase
-npm install @fullcalendar/react @fullcalendar/core @fullcalendar/daygrid
+npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction
 
 ```
 
