@@ -21,7 +21,7 @@ npm run dev
 npm install react-router-dom
 npm install firebase
 npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction
-
+npm install @mui/material @emotion/react @emotion/styled
 ```
 
 **Login credentials**
