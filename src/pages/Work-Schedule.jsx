@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import {Menu, MenuItem} from "@mui/material";
+import {database,collection, addDoc, getDocs, deleteDoc, doc, updateDoc} from "../firebase_setup/firebase";
 
 function WorkSchedule() {
 
@@ -10,72 +13,90 @@ function WorkSchedule() {
         {id: 1, title: "Current Day", start: new Date() }
     ]);
 
-    const inputEvent = (selectedDate) => {
+    const [menu, setMenu] = useState(null)
+    const [selectedEvent, setSelectedEvent] = useState(null)
+
+    const eCollection = collection(database, "events")
+
+    useEffect(() => {
+        const fetchEvents = async() => {
+            const eventSnap = await getDocs(eCollection);
+            const eventList = eventSnap.docs.map(doc => ({ id: doc.id, title: doc.data().title, start: doc.data().start}))
+            setEvents(eventList);
+        };
+        fetchEvents();
+    }, []);
+
+    const inputEvent = async (selectedDate) => {
         let title = prompt("Enter the event title");
+        const user=JSON.parse(localStorage.getItem("user"));
+        const username= user?.name||"Unknown User";
         if (title) {
-
             const newEvent = {
-                id: Date.now(),
                 title,
-                start: selectedDate.date,
-                extendedProps: {id: Date.now()}
+                start: selectedDate.date.toISOString(),
+                Owner: username
+
             }
-            setEvents([...events, newEvent]);
+            const docRef = await addDoc(eCollection, newEvent);
+            setEvents([...events, { id: docRef.id, ...newEvent }]);
         }
     };
 
-    const eventSelection = (selectedEvent) => {
 
-        let eventselect = prompt("What would you like to do here?");
-
-        if (eventselect === "delete")
-        {
-            deleteEvent(selectedEvent);
-        }
-        else if (eventselect === "rename" && selectedEvent.event.extendedProps.id)
-        {
-            renameEvent(selectedEvent);
-        }
-        else if (eventselect === "view" && selectedEvent.event.extendedProps.id)
-        {
-            viewEvent(selectedEvent);
-        }
-
-    };
-
-    const renameEvent = (selectedEvent) => {
+    const renameEvent = async() => {
 
         let newName = prompt("Update event with a suitable name")
 
         if(!newName) return;
 
-        setEvents(events.map(event => event.id === selectedEvent.event.extendedProps.id
+        const eventId = selectedEvent.event.id;
+
+        await updateDoc(doc(database, "events", eventId), {title: newName })
+
+        setEvents(events.map(event => event.id === eventId
             ? { ...event, title: newName }
             : event
         ));
+        menuClose();
     };
 
-    const deleteEvent = (selectedEvent) => {
-
-        const eventId = selectedEvent.event.extendedProps.id;
+    const deleteEvent = async () => {
+        const eventId = selectedEvent.event.id;
         if (!eventId) return;
 
         const formattedDate = new Date(selectedEvent.event.start).toLocaleString();
         if (window.confirm(`Are you sure you want to delete: ${selectedEvent.event.title} on ${formattedDate}?`))
         {
+            await deleteDoc(doc(database, "events", eventId))
             setEvents(events.filter(event => event.id !== eventId));
         }
+        menuClose();
     };
 
-    const viewEvent = (selectedEvent) => {
+    const viewEvent = () => {
 
-        alert(`The event you're viewing is "${selectedEvent.event.title}"`)
+        alert(`The event you're viewing is "${selectedEvent.event.title}" \n Created by: ${selectedEvent.event.extendedProps.Owner}`);
+        menuClose();
     }
 
+    const menuOpen = (event, selectedEvent) => {
+        setMenu({
+            mouseX: event.clientX + 10,
+            mouseY: event.clientY + 10,
+        });
+        setSelectedEvent(selectedEvent);
+    };
+
+    const menuClose= () => {
+        setMenu(null);
+        setSelectedEvent(null);
+    };
 
     return(
         <div>
             <h2>Work Schedule</h2>
+            <Link to={"/consultant-dashboard"} style={{float: "right",padding: "10px",fontSize: "16px"}}>Back To Dashboard</Link>
             <FullCalendar
                 plugins = {[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
@@ -86,8 +107,19 @@ function WorkSchedule() {
                 }}
                 events = {events}
                 dateClick = {inputEvent}
-                eventClick = {eventSelection}
+                eventClick = {(event) => menuOpen(event.jsEvent, event)}
             />
+            <Menu
+
+                anchorReference="anchorPosition"
+                anchorPosition ={menu ? {top: menu.mouseY, left: menu.mouseX } : undefined}
+                open = {Boolean(menu)}
+                onClose = {menuClose}
+            >
+                <MenuItem onClick={renameEvent}>Rename</MenuItem>
+                <MenuItem onClick={viewEvent}>View</MenuItem>
+                <MenuItem onClick={deleteEvent}>Delete</MenuItem>
+            </Menu>
         </div>
     );
 }
