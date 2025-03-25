@@ -33,7 +33,7 @@ function Login() {
 				if (UserActivation.role === "manager") {
 					navigate("/manager-dashboard");
 				} else {
-					navigate("/employee-dashboard");
+					navigate("/consultant-dashboard");
 				}
 			});
 		} else {
