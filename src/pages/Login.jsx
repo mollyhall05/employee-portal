@@ -27,9 +27,15 @@ function Login() {
 			// Found a matching user; for each match (ideally one), store user info in local storage
 			querySnapshot.forEach((doc) => {
 				console.log(doc.id);
+				localStorage.setItem("userRole", UserActivation.role);
 				localStorage.setItem("user", JSON.stringify({...doc.data(),id:doc.id}));
+
+				if (UserActivation.role === "manager") {
+					navigate("/manager-dashboard");
+				} else {
+					navigate("/employee-dashboard");
+				}
 			});
-			navigate("/consultant-dashboard");
 		} else {
 			alert("Invalid credentials");
 		}

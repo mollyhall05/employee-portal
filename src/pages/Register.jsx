@@ -11,6 +11,7 @@ function RegisterPage() {
 		email: "",
 		phone_number:"",
 		password: "",
+		role: "consultant",
 	});
 	// State for error messages
 	const [error, setError] = useState("");
@@ -54,7 +55,7 @@ function RegisterPage() {
 		// If either email or username already exists, clear the fields and display an error
 		if (!emailSnapshot.empty || !usernameSnapshot.empty||!numberSnapshot.empty) {
 			setError("Username, Phone number or Email already exists!");
-			setFormData({name:"",username: "", email: "",phone_number:"", password: "" });
+			setFormData({name:"",username: "", email: "",phone_number:"", password: "", role:"consultant", });
 			return;
 		}
 
@@ -130,6 +131,20 @@ function RegisterPage() {
 						onChange={handleInputChange}
 						required
 					/>
+				</div>
+
+				<div className="form-group">
+					<label htmlFor="role">Role:</label>
+					<select
+						id="role"
+						name="role"
+						value={formData.role}
+						onChange={handleInputChange}
+						required
+					>
+						<option value="consultant">Consultant</option>
+						<option value="admin">Admin</option>
+					</select>
 				</div>
 
 				<button type="submit">Register</button>
