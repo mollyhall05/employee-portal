@@ -143,7 +143,7 @@ function RegisterPage() {
 						required
 					>
 						<option value="consultant">Consultant</option>
-						<option value="admin">Admin</option>
+						<option value="Admin">Admin</option>
 					</select>
 				</div>
 
