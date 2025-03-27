@@ -6,6 +6,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './pages/Login'
 import ConsultantDashboard from './pages/consultant-dashboard'
+import ManagerDashboard from "./pages/manager-dashboard";
 import WorkSchedule from './pages/Work-Schedule';
 import Register from "./pages/Register.jsx";
 import UpdateInfo from "./pages/Update-Info.jsx";
@@ -20,6 +21,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/consultant-dashboard" element={<ConsultantDashboard />} />
+                <Route path="/manager-dashboard" element={<ManagerDashboard />} />
                 <Route path="/Register" element={<Register />}/>
                 <Route path="/update-info" element={<UpdateInfo />} />
                 <Route path="/work-schedule" element={<WorkSchedule />}/>
