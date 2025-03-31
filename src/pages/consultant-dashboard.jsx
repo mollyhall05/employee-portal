@@ -11,7 +11,7 @@ function Dashboard() {
 
   return (
       <div style={{textAlign: "center", padding: "20px"}}>
-          <h2>Employee Dashboard</h2>
+          <h2>Consultant Dashboard</h2>
           <p>Welcome! Here are your options:</p>
 
           <button onClick={() => navigate("/work-schedule")}>📅 Work Schedule</button>

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { Link } from "react-router-dom";
+import "./Register.css";
+
 function RegisterPage() {
 	const navigate = useNavigate();
 	// State to store form input values
@@ -148,6 +151,8 @@ function RegisterPage() {
 				</div>
 
 				<button type="submit">Register</button>
+				<br />
+				<Link className="login-link" to={"/"}>Back to Login</Link>
 			</form>
 		</div>
 	);

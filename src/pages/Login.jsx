@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import './Login.css';
 
 function Login() {
 	const [email, setEmail] = useState("");
@@ -42,10 +43,10 @@ function Login() {
 	};
 
 	return (
-		<div style={{ textAlign: "center", padding: "20px" }}>
+		<div className="login-container">
 			<h2>Login</h2>
 			<form onSubmit={handleLogin}>
-				<input
+				<input className="login-input"
 					type="email"
 					placeholder="Email"
 					value={email}
@@ -53,7 +54,7 @@ function Login() {
 					required
 				/>
 				<br />
-				<input
+				<input className="login-input"
 					type="password"
 					placeholder="Password"
 					value={password}
@@ -61,9 +62,9 @@ function Login() {
 					required
 				/>
 				<br />
-				<button type="submit">Login</button>
+				<button className="login-button" type="submit">Login</button>
 				<br />
-				<Link to={"/Register"}>Register</Link>
+				<Link className="register-link" to={"/Register"}>Register</Link>
 			</form>
 		</div>
 	);
