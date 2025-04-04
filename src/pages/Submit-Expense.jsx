@@ -1,16 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
+import { database } from "../firebase_setup/firebase.js";
+import { collection, addDoc,doc,getDoc} from "firebase/firestore";
 
 function SubmitExpense() {
     const navigate = useNavigate();
     const [amount, setAmount] = useState('');
     const [description, setDescription] = useState('');
-
-    const handleSubmit = (e) => {
+    const [userData, setUserData] = useState(null);
+    useEffect(() => {
+            const userData = localStorage.getItem("user");
+            if (userData) {
+                setUserData(JSON.parse(userData));
+            }
+        }, []);
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        alert(`Expense Submitted: $${amount} for ${description}`);
-        setAmount('');
-        setDescription('');
+        // Validate the form inputs
+        if (!amount || !description) {
+            alert('Please fill in all fields');
+            return;
+        }
+        if (isNaN(amount) || amount <= 0) {
+            alert('Please enter a valid amount');
+            return;
+        }
+        const userID = userData.id; // Assuming EmployeeID is stored in localStorage
+        try {
+            console.log('User ID:', userID);
+            const ExpenseRequests = doc(database, 'ExpenseRequests', userID);
+            const expenseDoc = await getDoc(ExpenseRequests);
+            if (expenseDoc.exists()) {
+                alert('Expense request already exists for this user!');
+                return;
+            }
+            // Create a new document with the userID as the document ID
+            await addDoc(collection(database, 'ExpenseRequests'), {
+                userID: userID,
+                amount: amount,
+                description: description,
+                status: 'Pending',
+            });
+            alert('Expense request submitted successfully!');
+            navigate('/consultant-dashboard'); // Redirect to dashboard after successful submission
+        }
+        catch (error) {
+            console.error('Error checking expense request:', error);
+            alert('Error checking expense request. Please try again later.');
+            return;
+        }
     };
 
     return (
