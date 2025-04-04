@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import './Login.css';
+import './styles/Login.css';
+import fdmLogo from './styles/images/FDMlogo.png';
 
 function Login() {
 	const [email, setEmail] = useState("");
@@ -23,7 +24,6 @@ function Login() {
 		);
 
 		const querySnapshot = await getDocs(q);
-
 		if (!querySnapshot.empty) {
 			// Found a matching user; for each match (ideally one), store user info in local storage
 			querySnapshot.forEach((doc) => {
@@ -44,7 +44,8 @@ function Login() {
 
 	return (
 		<div className="login-container">
-			<h2>Login</h2>
+			<img src={fdmLogo} alt="FDM Logo" className="logo" />
+			<h2 className="login-tile">Login</h2>
 			<form onSubmit={handleLogin}>
 				<input className="login-input"
 					type="email"

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import "./Register.css";
+import "./styles/Register.css";
 
 function RegisterPage() {
 	const navigate = useNavigate();
