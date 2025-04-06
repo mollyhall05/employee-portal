@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc,doc,getDoc} from "firebase/firestore";
-
+import { Navigate } from 'react-router-dom';
 function SubmitLeave() {
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
@@ -98,7 +98,6 @@ function SubmitLeave() {
                 <br />
                 <button type="submit" onClick={handleSubmit}>Submit</button>
             </form>
-
             <div style={{marginTop: '20px'}}>
                 <button onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
             </div>

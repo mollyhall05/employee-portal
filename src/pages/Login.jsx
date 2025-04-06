@@ -43,6 +43,10 @@ function Login() {
 	};
 
 	return (
+		<div className="login-page">
+		<nav>
+			<button className="nav-button" onClick={() => navigate("/consultant-info")}>View Consultant Information</button>
+		</nav>
 		<div className="login-container">
 			<img src={fdmLogo} alt="FDM Logo" className="logo" />
 			<h2 className="login-tile">Login</h2>
@@ -67,6 +71,7 @@ function Login() {
 				<br />
 				<Link className="register-link" to={"/Register"}>Register</Link>
 			</form>
+		</div>
 		</div>
 	);
 }
