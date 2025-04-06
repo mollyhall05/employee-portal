@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react';
 import { database } from "../firebase_setup/firebase.js";
 import { collection,getDocs} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { colors } from '@mui/material';
+import { red } from '@mui/material/colors';
 const ConsultantInfo = () => {
     const [userData, setUserData] = useState([]);
     const navigate = useNavigate();
@@ -43,7 +45,7 @@ const ConsultantInfo = () => {
             <p>Loading consultant information...</p>
         )}
         <div>
-        <button onClick={() => navigate("/")}>Back to Dashboard</button>
+        <button onClick={() => navigate("/")} style={{backgroundColor:"red"}}>Back to Dashboard</button>
         </div>
     </div>
     );
