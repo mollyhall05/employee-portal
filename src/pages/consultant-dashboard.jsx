@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate} from "react-router-dom";
+import './styles/Consultant-Dashboard.css';
+import fdmLogo from './styles/images/FDMlogo.png';
+
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -10,16 +13,15 @@ function Dashboard() {
   };
 
   return (
-      <div style={{textAlign: "center", padding: "20px"}}>
-          <h2>Consultant Dashboard</h2>
-          <p>Welcome! Here are your options:</p>
-
-          <button onClick={() => navigate("/work-schedule")}>📅 Work Schedule</button>
-          <button onClick={() => navigate("/submit-leave")}>📝 Submit Leave</button>
-          <button onClick={() => navigate("/submit-expense")}>💰 Submit Expense</button>
-          <button onClick={() => alert("Viewing Notifications")}>🔔 Notifications</button>
-          <button onClick={() => navigate("/update-info")}>👤 Profile</button>
-          <div style={{marginTop: "20px"}}>
+      <div className="dashboard-container">
+        <img src={fdmLogo} alt="FDM Logo" className="Logo" />
+        <br></br>
+          <button onClick={() => navigate("/work-schedule")} className="buttons">📅 Work Schedule</button>
+          <button onClick={() => navigate("/submit-leave")} className="buttons">📝 Submit Leave</button>
+          <button onClick={() => navigate("/submit-expense")} className="buttons">💰 Submit Expense</button>
+          <button onClick={() => alert("Viewing Notifications")} className="buttons">🔔 Notifications</button>
+          <button onClick={() => navigate("/update-info")} className="buttons">👤 Profile</button>
+          <div className="Logout">
               <button onClick={handleLogout} style={{backgroundColor: "red", color: "white"}}>
                   🚪 Logout
               </button>

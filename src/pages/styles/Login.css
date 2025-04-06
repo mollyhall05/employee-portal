@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    background-image: url("/src/pages/styles/images/BGpic.jpg");
+    background-size: cover;
+}
 .login-container {
     display: flex;
     flex-direction: column;
@@ -9,6 +14,7 @@
     width:20rem;
     border-radius: 4rem;
     font-family: "Montserrat", sans-serif;
+
 }
 
 .logo{
@@ -71,7 +77,8 @@ form {
 
 .register-link {
     margin-top: 0rem;
-    color: #6b7280;
+    color: #000000;
+    font-size: 18px;
 }
 
 .register-text {

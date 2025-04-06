@@ -1,9 +1,26 @@
+body{
+    background-image: url("/src/pages/styles/images/BGpic.jpg");
+    background-size: cover;
+}
+
 .register-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
+    height:45rem;
+    width:30rem;
+    background: rgba(200, 200, 200, 0.8);
+    border-radius: 4rem;
+    font-family: "Montserrat", sans-serif;
+    
+}
+
+.logo{
+    padding: 0.5rem;
+    object-fit: cover;
+    width: 60%;
+    height: 70px;
 }
 
 h2 {
@@ -19,14 +36,17 @@ form {
     align-items: center;
     width: 100%;
     max-width: 400px;
+
 }
 
 .form-group {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    width: 100%;
+    width: 80%;
     margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+
 }
 
 label {

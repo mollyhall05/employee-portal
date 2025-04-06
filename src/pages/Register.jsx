@@ -4,6 +4,7 @@ import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import "./styles/Register.css";
+import fdmLogo from './styles/images/FDMlogo.png';
 
 function RegisterPage() {
 	const navigate = useNavigate();
@@ -74,13 +75,14 @@ function RegisterPage() {
 
 	return (
 		<div className="register-container">
+			<img src={fdmLogo} alt="FDM Logo" className="logo" />
 			<h2>Register</h2>
 			{error && <p style={{ color: "red" }}>{error}</p>}
 			<form onSubmit={handleSubmit}>
 				<div className="form-group">
-					<label htmlFor="name">Full Name:</label>
 					<input
 						type="name"
+						placeholder = "Full Name"
 						id="name"
 						name="name"
 						value={formData.name}
@@ -89,9 +91,9 @@ function RegisterPage() {
 					/>
 				</div>
 				<div className="form-group">
-					<label htmlFor="username">Username:</label>
 					<input
 						type="text"
+						placeholder = "Username"
 						id="username"
 						name="username"
 						value={formData.username}
@@ -101,9 +103,9 @@ function RegisterPage() {
 				</div>
 
 				<div className="form-group">
-					<label htmlFor="email">Email:</label>
 					<input
 						type="email"
+						placeholder = "Email"
 						id="email"
 						name="email"
 						value={formData.email}
@@ -113,9 +115,9 @@ function RegisterPage() {
 				</div>
 
 				<div className="form-group">
-					<label htmlFor="phone_number">Phone Number:</label>
 					<input
 						type="phone_number"
+						placeholder = "Phone Number"
 						id="phone_number"
 						name="phone_number"
 						value={formData.phone_number}
@@ -125,9 +127,9 @@ function RegisterPage() {
 				</div>
 
 				<div className="form-group">
-					<label htmlFor="password">Password:</label>
 					<input
 						type="password"
+						placeholder = "Password"
 						id="password"
 						name="password"
 						value={formData.password}
@@ -136,8 +138,7 @@ function RegisterPage() {
 					/>
 				</div>
 
-				<div className="form-group">
-					<label htmlFor="role">Role:</label>
+				<div className="form-group role">
 					<select
 						id="role"
 						name="role"
