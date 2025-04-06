@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, doc, updateDoc } from "firebase/firestore";
-
+import { useNavigate } from "react-router-dom";
 const DisplayInfo = () => {
+	const navigate = useNavigate();
 	const [personalInfo, setPersonalInfo] = useState(null);
 	const [isEdit, setIsEdit] = useState(false); // Edit mode for personal information
 	const [isPasswordEdit, setIsPasswordEdit] = useState(false); // Edit mode for password
@@ -278,6 +279,9 @@ const DisplayInfo = () => {
 					</button>
 				) : null}
 			</form>
+			<div style={{marginTop: '20px'}}>
+                <button onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
+            </div>
 		</div>
 	);
 };

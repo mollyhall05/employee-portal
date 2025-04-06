@@ -10,6 +10,7 @@ import Register from "./pages/Register.jsx";
 import UpdateInfo from "./pages/Update-Info.jsx";
 import SubmitExpense from "./pages/Submit-Expense.jsx";
 import SubmitLeave from "./pages/Submit-Leave.jsx";
+import ConsultantInfo from "./pages/Consultant-Info.jsx";
 
 function App() {
     const [count, setCount] = useState(0)
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/work-schedule" element={<WorkSchedule />}/>
                 <Route path="/submit-expense" element={<SubmitExpense />}/>
                 <Route path="/submit-leave" element={<SubmitLeave />}/>
+                <Route path="/consultant-info" element={<ConsultantInfo />}/>
             </Routes>
         </Router>
     );
