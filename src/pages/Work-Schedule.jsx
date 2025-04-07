@@ -12,7 +12,7 @@ import fdmLogo from './styles/images/FDMlogo.png';
 function WorkSchedule() {
 
     const [events, setEvents] = useState([
-        {id: 1, title: "Current Day", start: new Date() }
+        {id: 1, title: "Current Day", start: new Date(),Owner: "Unknown User"},
     ]);
 
     const [menu, setMenu] = useState(null)
@@ -23,7 +23,7 @@ function WorkSchedule() {
     useEffect(() => {
         const fetchEvents = async() => {
             const eventSnap = await getDocs(eCollection);
-            const eventList = eventSnap.docs.map(doc => ({ id: doc.id, title: doc.data().title, start: doc.data().start}))
+            const eventList = eventSnap.docs.map(doc => ({ id: doc.id, title: doc.data().title, start: doc.data().start,owner: doc.data().Owner,}))
             setEvents(eventList);
         };
         fetchEvents();
@@ -77,8 +77,9 @@ function WorkSchedule() {
     };
 
     const viewEvent = () => {
-
-        alert(`The event you're viewing is "${selectedEvent.event.title}" \n Created by: ${selectedEvent.event.extendedProps.Owner}`);
+        console.log(selectedEvent.event.start);
+        console.log(events)
+        alert(`The event you're viewing is "${selectedEvent.event.title}" \n Created by: ${selectedEvent.event.extendedProps.owner} \n Date: ${new Date(selectedEvent.event.start).toLocaleString()}`);
         menuClose();
     }
 

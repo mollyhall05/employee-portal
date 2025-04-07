@@ -148,6 +148,7 @@ function RegisterPage() {
 					>
 						<option value="consultant">Consultant</option>
 						<option value="Admin">Admin</option>
+						<option value="Manager">Manager</option>
 					</select>
 				</div>
 

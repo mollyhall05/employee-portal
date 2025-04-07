@@ -11,6 +11,10 @@ import UpdateInfo from "./pages/Update-Info.jsx";
 import SubmitExpense from "./pages/Submit-Expense.jsx";
 import SubmitLeave from "./pages/Submit-Leave.jsx";
 import ConsultantInfo from "./pages/Consultant-Info.jsx";
+import ViewNotifications from "./pages/View-Notifications.jsx";
+import PostNotification from "./pages/Post-Notification.jsx";
+import ApproveExpenses from "./pages/Approve-Expenses.jsx";
+import ApproveLeave from "./pages/Approve-Leave.jsx";
 
 function App() {
     const [count, setCount] = useState(0)
@@ -27,6 +31,10 @@ function App() {
                 <Route path="/submit-expense" element={<SubmitExpense />}/>
                 <Route path="/submit-leave" element={<SubmitLeave />}/>
                 <Route path="/consultant-info" element={<ConsultantInfo />}/>
+                <Route path="/view-notifications" element={<ViewNotifications />}/>
+                <Route path="/post-notification" element={<PostNotification />}/>
+                <Route path="/approve-expenses" element={<ApproveExpenses />}/>
+                <Route path="/approve-leave" element={<ApproveLeave />}/>
             </Routes>
         </Router>
     );
