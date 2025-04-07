@@ -13,7 +13,6 @@ function ManagerDashboard() {
       <div style={{textAlign: "center", padding: "20px"}}>
           <h2>Manager Dashboard</h2>
           <p>Welcome! Here are your options:</p>
-
           <div style={{marginTop: "20px"}}>
               <button onClick={handleLogout} style={{backgroundColor: "red", color: "white"}}>
                   🚪 Logout
@@ -22,5 +21,4 @@ function ManagerDashboard() {
       </div>
   );
 }
-
 export default ManagerDashboard;

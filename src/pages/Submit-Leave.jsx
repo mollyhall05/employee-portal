@@ -56,7 +56,7 @@ function SubmitLeave() {
     };
 
     return (
-        <div style={{textAlign: 'center', padding: '20px' }}>
+        <div style={{textAlign: 'center', padding: '20px'}}>
             <h2>Submit Leave Request</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -72,8 +72,6 @@ function SubmitLeave() {
                         <option value="Personal">Personal</option>
                     </select>
                 </div>
-
-                <br />
                 <div>
                     <label>Start Date: </label>
                     <input
@@ -83,8 +81,6 @@ function SubmitLeave() {
                         required
                     />
                 </div>
-
-                <br />
                 <div>
                     <label>End Date: </label>
                     <input
@@ -99,7 +95,7 @@ function SubmitLeave() {
                 <button type="submit" onClick={handleSubmit}>Submit</button>
             </form>
             <div style={{marginTop: '20px'}}>
-                <button onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
+                <button onClick={() => navigate('/consultant-dashboard')} style={{background:"red"}}>Back to Dashboard</button>
             </div>
         </div>
     );

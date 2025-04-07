@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc,doc,getDoc} from "firebase/firestore";
+import { colors } from '@mui/material';
 
 function SubmitExpense() {
     const navigate = useNavigate();
@@ -54,28 +55,43 @@ function SubmitExpense() {
     return (
         <div style={{textAlign: 'center', padding: '20px' }}>
             <h2>Submit Expense</h2>
-            <form onSubmit={handleSubmit} style={{display: "inline-block", textAlign: "left"}}>
+            <form onSubmit={handleSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <div>
                     <label>Amount:</label>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <span style={{ marginRight: "5px" }}>£</span>
                     <input
                         type="number"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
+                        min="0"
+                        step="0.01" // Allows decimal values for GBP
                         required
                     />
+                    </div>
                 </div>
                 <div>
-                    <label>Description:</label>
-                    <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
+                <label>Description:</label>
+                <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Enter expense details (e.g., Travel, Meals, etc.)"
+        rows="2" // Initial number of rows
+        style={{
+            width: "100%",
+            resize: "none", // Prevent manual resizing
+            overflow: "hidden", // Prevent scrollbars
+        }}
+        onInput={(e) => {
+            e.target.style.height = "auto"; // Reset height
+            e.target.style.height = `${e.target.scrollHeight}px`; // Adjust height dynamically
+        }}
+        required
+    />
                 </div>
                 <button type="submit">Submit</button>
+                <button onClick={() => navigate('/consultant-dashboard')} style={{background:"red"}}>Back to Dashboard</button>
             </form>
-            <button onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
         </div>
     );
 }

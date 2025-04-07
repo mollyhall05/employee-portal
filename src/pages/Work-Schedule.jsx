@@ -10,7 +10,7 @@ import {database,collection, addDoc, getDocs, deleteDoc, doc, updateDoc} from ".
 function WorkSchedule() {
 
     const [events, setEvents] = useState([
-        {id: 1, title: "Current Day", start: new Date() }
+        {id: 1, title: "Current Day", start: new Date(),Owner: "Unknown User"},
     ]);
 
     const [menu, setMenu] = useState(null)
@@ -21,7 +21,7 @@ function WorkSchedule() {
     useEffect(() => {
         const fetchEvents = async() => {
             const eventSnap = await getDocs(eCollection);
-            const eventList = eventSnap.docs.map(doc => ({ id: doc.id, title: doc.data().title, start: doc.data().start}))
+            const eventList = eventSnap.docs.map(doc => ({ id: doc.id, title: doc.data().title, start: doc.data().start,owner: doc.data().Owner,}))
             setEvents(eventList);
         };
         fetchEvents();
@@ -75,8 +75,9 @@ function WorkSchedule() {
     };
 
     const viewEvent = () => {
-
-        alert(`The event you're viewing is "${selectedEvent.event.title}" \n Created by: ${selectedEvent.event.extendedProps.Owner}`);
+        console.log(selectedEvent.event.start);
+        console.log(events)
+        alert(`The event you're viewing is "${selectedEvent.event.title}" \n Created by: ${selectedEvent.event.extendedProps.owner} \n Date: ${new Date(selectedEvent.event.start).toLocaleString()}`);
         menuClose();
     }
 
@@ -97,7 +98,16 @@ function WorkSchedule() {
         <div>
             <h2>Work Schedule</h2>
             <Link to={"/consultant-dashboard"} style={{float: "right",padding: "10px",fontSize: "16px"}}>Back To Dashboard</Link>
-            <FullCalendar
+            <FullCalendar lCalendar
+            style={{
+                margin: "20px auto",
+                width: "90%",
+                backgroundColor: "white",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                padding: "10px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            }}
                 plugins = {[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 headerToolbar={{
