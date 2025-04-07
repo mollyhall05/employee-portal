@@ -49,8 +49,8 @@ const Notifications = () => {
                 </ul>
             )}
 
-            <button onClick={() =>navigate("/manager-dashboard")} style={{marginTop: "20px"}}>
-                Back to Manager Dashboard
+            <button onClick={() =>navigate("/consultant-dashboard")} style={{marginTop: "20px"}}>
+                Back to Dashboard
             </button>
         </div>
     );

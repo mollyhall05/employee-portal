@@ -9,10 +9,6 @@ import profile from './styles/images/profile_icon.png';
 import submit_expense from './styles/images/submit_expense_icon.png';
 import submit_leave from './styles/images/submit_leave_icon.png';
 
-
-
-
-
 function Dashboard() {
   const navigate = useNavigate();
 
@@ -31,7 +27,7 @@ function Dashboard() {
           <button onClick={() => navigate("/submit-expense")} className="buttons"> <img src={submit_expense} className="icon"></img> <br/> Submit Expense</button>
           </div>
           <div className="row">
-          <button onClick={() => alert("Viewing Notifications")} className="buttons"> <img src={notif} className="icon"></img> <br/> Notifications</button>
+          <button onClick={() => navigate("/view-notifications")} className="buttons"> <img src={notif} className="icon"></img> <br/> Notifications</button>
           <button onClick={() => navigate("/update-info")} className="buttons"> <img src={profile} className="icon"></img> <br/> Profile</button>
 
           </div>
