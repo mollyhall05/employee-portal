@@ -90,5 +90,10 @@ form {
     text-decoration: underline;
 }
 
-
+.nav-button{
+    background: rgba(59, 130, 246, 0.95);
+    font-family: "Montserrat", sans-serif;
+    width:90%;
+    margin-top:1rem;
+}
   

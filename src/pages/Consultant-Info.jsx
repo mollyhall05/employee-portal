@@ -2,8 +2,9 @@ import React, { useState,useEffect } from 'react';
 import { database } from "../firebase_setup/firebase.js";
 import { collection,getDocs} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { colors } from '@mui/material';
-import { red } from '@mui/material/colors';
+import './styles/Consultant-Info.css';
+import profile_icon from './styles/images/profile_icon.png';
+
 const ConsultantInfo = () => {
     const [userData, setUserData] = useState([]);
     const navigate = useNavigate();
@@ -23,19 +24,20 @@ const ConsultantInfo = () => {
         fetchUserData();
     }, []);
     return (
-        <div>
+        <div className="consultant-info-container">
         <h2>Consultant Information</h2>
         {userData.length > 0 ? (
-            <div>
+            <div className>
                 {userData.map((consultant) => (
-                    <button
+                    <button className="consultant-button"
                     key={consultant.id}
                     onClick={() =>
                         alert(
                             `Consultant Details:\nName: ${consultant.name}\nEmail: ${consultant.email}\nPhone: ${consultant.phone_number}`
                         )
                     }
-                >
+                > 
+                    <img src={profile_icon} alt="Profile Icon" className="profile-icon"/> <br/>
                     {consultant.name}
                 </button>
                 ))}
@@ -45,7 +47,7 @@ const ConsultantInfo = () => {
             <p>Loading consultant information...</p>
         )}
         <div>
-        <button onClick={() => navigate("/")} style={{backgroundColor:"red"}}>Back to Dashboard</button>
+        <button onClick={() => navigate("/")} className="back-button">Back to Dashboard</button>
         </div>
     </div>
     );
