@@ -31,7 +31,7 @@ function Login() {
 				localStorage.setItem("userRole", UserActivation.role);
 				localStorage.setItem("user", JSON.stringify({...doc.data(),id:doc.id}));
 
-				if (doc.data().role === "Admin") {
+				if (doc.data().role === "Manager" || doc.data().role === "Admin") {
 					navigate("/manager-dashboard");
 				} else {
 					navigate("/consultant-dashboard");

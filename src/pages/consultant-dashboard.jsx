@@ -19,7 +19,7 @@ function Dashboard() {
           <button onClick={() => navigate("/work-schedule")} className="buttons">📅 Work Schedule</button>
           <button onClick={() => navigate("/submit-leave")} className="buttons">📝 Submit Leave</button>
           <button onClick={() => navigate("/submit-expense")} className="buttons">💰 Submit Expense</button>
-          <button onClick={() => alert("Viewing Notifications")} className="buttons">🔔 Notifications</button>
+          <button onClick={() => navigate("/view-notifications")} className="buttons">🔔 Notifications</button>
           <button onClick={() => navigate("/update-info")} className="buttons">👤 Profile</button>
           <div className="Logout">
               <button onClick={handleLogout} style={{backgroundColor: "red", color: "white"}}>
