@@ -13,7 +13,6 @@ function ManagerDashboard() {
       <div style={{backgroundColor: 'white'}}>
           <h2>Manager Dashboard</h2>
           <p>Welcome! Here are your options:</p>
-
           <div style={{marginTop: "20px"}}>
               <button onClick={() => navigate("/post-notification")} style={{marginRight: "10px"}}>
                   📢 Post Notification
@@ -31,5 +30,4 @@ function ManagerDashboard() {
       </div>
   );
 }
-
 export default ManagerDashboard;

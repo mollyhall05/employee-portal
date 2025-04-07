@@ -26,7 +26,6 @@ body{
 h2 {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #1f2937;
     margin-bottom: 2rem;
 }
 
@@ -57,7 +56,6 @@ label {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
     font-weight: bold;
-    color: #374151;
 }
 
 input, select {

@@ -159,7 +159,14 @@ const DisplayInfo = () => {
 						onChange={handleChange}
 						required
 						disabled={!isEdit}
-						style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+						style={{
+							width: "100%",
+							padding: "8px",
+							boxSizing: "border-box",
+							overflow: "hidden", // Hide overflowing text
+							textOverflow: "ellipsis", // Add ellipsis for overflowing text
+							whiteSpace: "nowrap", // Prevent text from wrapping
+						}}
 					/>
 					<label>Username:</label>
 					<input
@@ -169,8 +176,15 @@ const DisplayInfo = () => {
 						onChange={handleChange}
 						required
 						disabled={!isEdit}
-						style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
-					/>
+						style={{
+							width: "100%",
+							padding: "8px",
+							boxSizing: "border-box",
+							overflow: "hidden", // Hide overflowing text
+							textOverflow: "ellipsis", // Add ellipsis for overflowing text
+							whiteSpace: "nowrap", // Prevent text from wrapping
+						}}
+						/>
 				</div>
 				<div
 					style={{
@@ -189,7 +203,14 @@ const DisplayInfo = () => {
 						onChange={handleChange}
 						required
 						disabled={!isEdit}
-						style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+						style={{
+							width: "100%",
+							padding: "8px",
+							boxSizing: "border-box",
+							overflow: "hidden", // Hide overflowing text
+							textOverflow: "ellipsis", // Add ellipsis for overflowing text
+							whiteSpace: "nowrap", // Prevent text from wrapping
+						}}
 					/>
 					<label>Phone Number:</label>
 					<input
@@ -199,7 +220,14 @@ const DisplayInfo = () => {
 						onChange={handleChange}
 						required
 						disabled={!isEdit}
-						style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+						style={{
+							width: "100%",
+							padding: "8px",
+							boxSizing: "border-box",
+							overflow: "hidden", // Hide overflowing text
+							textOverflow: "ellipsis", // Add ellipsis for overflowing text
+							whiteSpace: "nowrap", // Prevent text from wrapping
+						}}
 					/>
 				</div>
 
