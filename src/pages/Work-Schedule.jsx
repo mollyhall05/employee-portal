@@ -6,6 +6,8 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import {Menu, MenuItem} from "@mui/material";
 import {database,collection, addDoc, getDocs, deleteDoc, doc, updateDoc} from "../firebase_setup/firebase";
+import './styles/Work-Schedule.css';
+import fdmLogo from './styles/images/FDMlogo.png';
 
 function WorkSchedule() {
 
@@ -94,16 +96,20 @@ function WorkSchedule() {
     };
 
     return(
-        <div>
-            <h2>Work Schedule</h2>
-            <Link to={"/consultant-dashboard"} style={{float: "right",padding: "10px",fontSize: "16px"}}>Back To Dashboard</Link>
+        <div className="schedule-container">
+            <div className="schedule-header"> 
+                <img src={fdmLogo} alt="FDM Logo" className="logo" />
+                <br/>
+                <h2 className="schedule-title">Work Schedule</h2>
+                <Link to={"/consultant-dashboard"}className="back-link">Back To Dashboard</Link>
+            </div>
             <FullCalendar
                 plugins = {[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 headerToolbar={{
                     start: 'timeGridDay timeGridWeek dayGridMonth',
                     center: 'title',
-                    end: 'today prev next'
+                    end: 'prev today next'
                 }}
                 events = {events}
                 dateClick = {inputEvent}

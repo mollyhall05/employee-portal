@@ -1,0 +1,91 @@
+.schedule-container {
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(200, 200, 200, 0.8);    
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: "Montserrat", sans-serif;
+
+  }
+  
+  .schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .schedule-title {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .back-link {
+    text-decoration: none;
+    background-color: #f1f3f4;
+    color: #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    height:3rem;
+  }
+  
+  .back-link:hover {
+    background-color: #3b78e7;
+    color: #333;
+
+  }
+  
+  .fc {
+    font-family: Arial, sans-serif;
+   border-radius: 20px;
+  }
+  
+  .fc-toolbar-title {
+    font-size: 1.5rem !important;
+    color: #333;
+
+  }
+.fc-toolbar-chunk {
+    display: flex;
+    align-items: center;
+}
+
+  .fc-button {
+    background-color: #4285f4 !important;
+    border-color: #4285f4 !important;
+    box-shadow: none !important;
+  }
+  
+  .fc-button:hover {
+    background-color: #3b78e7 !important;
+    border-color: #3b78e7 !important;
+  }
+  
+  .fc-button-active {
+    background-color: #3367d6 !important;
+    border-color: #3367d6 !important;
+  }
+  
+  .fc-event {
+    background-color: #b11ce3;
+    border-color: #4285f4;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .fc-daygrid-day:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .fc-daygrid-day.fc-day-today {
+    background-color: rgba(66, 133, 244, 0.1);
+  }
+  
+  /* Menu styling override */
+  .MuiMenuItem-root {
+    font-size: 0.95rem !important;
+  }

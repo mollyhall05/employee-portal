@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc,doc,getDoc} from "firebase/firestore";
 import { Navigate } from 'react-router-dom';
+import './styles/Submit-Leave.css';
+import fdmLogo from './styles/images/FDMlogo.png';
+
 function SubmitLeave() {
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
@@ -56,49 +59,54 @@ function SubmitLeave() {
     };
 
     return (
-        <div style={{textAlign: 'center', padding: '20px' }}>
-            <h2>Submit Leave Request</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Leave Type: </label>
-                    <select
-                        value={leaveType}
-                        onChange={(e) => setLeaveType(e.target.value)}
-                        required
-                    >
-                        <option value="">Select Leave Type</option>
-                        <option value="Vacation">Vacation</option>
-                        <option value="Sick">Sick</option>
-                        <option value="Personal">Personal</option>
-                    </select>
-                </div>
+        <div className="submit-leave-container">
+            <div className="form-container">
+                <img src={fdmLogo} alt="FDM Logo" className="logo" />
+                <h2 className='submit-leave-title'>Submit Leave Request</h2>
+ 
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Leave Type: </label>
+                        <select className='leave-type'
+                            value={leaveType}
+                            onChange={(e) => setLeaveType(e.target.value)}
+                            required
+                        >
+                            <option value="">Select Leave Type</option>
+                            <option value="Vacation">Vacation</option>
+                            <option value="Sick">Sick</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
 
-                <br />
-                <div>
-                    <label>Start Date: </label>
-                    <input
-                        type="date"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                        required
-                    />
-                </div>
+                    <br />
+                    <div>
+                        <label>Start Date: </label>
+                        <input className='date'
+                            type="date"
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                            required
+                        />
+                    </div>
 
-                <br />
-                <div>
-                    <label>End Date: </label>
-                    <input
-                        type="date"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
-                        required
-                    />
-                </div>
+                    <br />
+                    <div>
+                        <label>End Date: </label>
+                        <input className='date'
+                            type="date"
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                            required
+                        />
+                    </div>
 
-                <br />
-                <button type="submit" onClick={handleSubmit}>Submit</button>
-            </form>
-            <div style={{marginTop: '20px'}}>
+                    <br />
+                    <button type="submit" onClick={handleSubmit}>Submit</button>
+                </form>
+            </div>
+
+            <div className="back">
                 <button onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
             </div>
         </div>
