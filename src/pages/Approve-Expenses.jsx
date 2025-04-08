@@ -56,7 +56,7 @@ const ApproveExpenses = () => {
                   <p><strong>Submitted at:</strong> {expense.submittedAt ? new Date(expense.submittedAt).toLocaleString() : 'N/A'}</p>
     
                   <div>
-                    <button
+                    <button 
                       onClick={() => handleApproval(expense.id, 'approved')}                    >
                       Approve
                     </button>
