@@ -1,0 +1,28 @@
+.main-container {
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(200, 200, 200, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: "Montserrat", sans-serif;
+    min-width: 85%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.notification-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}

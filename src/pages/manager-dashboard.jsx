@@ -1,5 +1,11 @@
 import React from "react";
 import { useNavigate} from "react-router-dom";
+import './styles/Consultant-Dashboard.css';
+import fdmLogo from './styles/images/FDMlogo.png';
+import calendar from './styles/images/calendar_icon.png';
+import notif from './styles/images/notif_icon.png';
+import expense from './styles/images/submit_expense_icon.png';
+import log_out from './styles/images/log_out.png';
 
 function ManagerDashboard() {
   const navigate = useNavigate();
@@ -10,24 +16,21 @@ function ManagerDashboard() {
   };
 
   return (
-      <div style={{backgroundColor: 'white'}}>
-          <h2>Manager Dashboard</h2>
-          <p>Welcome! Here are your options:</p>
-          <div style={{marginTop: "20px"}}>
-              <button onClick={() => navigate("/post-notification")} style={{marginRight: "10px"}}>
-                  📢 Post Notification
-              </button>
-              <button onClick={() => navigate("/approve-expenses")} style={{marginRight: "10px"}}>
-                  ✅ Approve Expenses
-              </button>
-              <button onClick={() => navigate("/approve-leave")} style={{marginRight: "10px"}}>
-                  ✅ Approve Leave
-                </button>
-              <button onClick={handleLogout} style={{backgroundColor: "red", color: "white"}}>
-                  🚪 Logout
-              </button>
-          </div>
-      </div>
+    <div className="dashboard-container">
+        <img src={fdmLogo} alt="FDM Logo" className="Logo" />
+        <br></br>
+        
+        <button onClick={() => navigate("/post-notification")} className="buttons"><img src={notif} className="icon"></img> <br/>Post Notification</button>
+            
+        <div className="row">
+            <button onClick={() => navigate("/approve-expenses")} className="buttons"><img src={expense} className="icon"></img> <br/> Approve Expenses</button>
+            <button onClick={() => navigate("/approve-leave")} className="buttons"><img src={calendar} className="icon"></img> <br/>Approve Leave</button>
+        </div>
+            <button onClick={handleLogout} className="Logout">
+            <img src={log_out} className="icon"></img> Logout
+            </button>
+    </div>
   );
 }
+
 export default ManagerDashboard;

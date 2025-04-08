@@ -40,7 +40,7 @@ const ApproveExpenses = () => {
     };
 
     return (
-        <div style={{ backgrounColor: 'white' }}>
+        <div className="main-container">
           <h2>Approve Expenses</h2>
           {status && <p>{status}</p>}
           
@@ -52,8 +52,8 @@ const ApproveExpenses = () => {
                 <div key={expense.id}>
                   <h3>{expense.description}</h3>
                   <p><strong>Amount:</strong> ${expense.amount}</p>
-                  <p><strong>Submitted by:</strong> {expense.submittedBy}</p>
-                  <p><strong>Submitted at:</strong> {new Date(expense.submittedAt.seconds * 1000).toLocaleString()}</p>
+                  <p><strong>Submitted by:</strong> {expense.submittedBy || 'Unknown'}</p>
+                  <p><strong>Submitted at:</strong> {expense.submittedAt ? new Date(expense.submittedAt).toLocaleString() : 'N/A'}</p>
     
                   <div>
                     <button
