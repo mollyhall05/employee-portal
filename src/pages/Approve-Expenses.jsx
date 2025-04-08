@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { database } from '../firebase_setup/firebase.js';
 import { collection, getDocs, query, onSnapshot, where, updateDoc, doc } from 'firebase/firestore';
+import './styles/Approve-Expenses.css';
+import fdmlogo from './styles/images/FDMlogo.png';
 
 const ApproveExpenses = () => {
     const [expenses, setExpenses] = useState([]);
@@ -41,15 +43,18 @@ const ApproveExpenses = () => {
 
     return (
         <div className="main-container">
+          <div className='background-container'>
+          <img src={fdmlogo} alt="FDM Logo" className='logo' />
           <h2>Approve Expenses</h2>
           {status && <p>{status}</p>}
           
-          <div>
+          
             {expenses.length === 0 ? (
               <p>No pending expenses to approve.</p>
             ) : (
               expenses.map((expense) => (
                 <div key={expense.id}>
+                  <div className="item"> 
                   <h3>{expense.description}</h3>
                   <p><strong>Amount:</strong> ${expense.amount}</p>
                   <p><strong>Submitted by:</strong> {expense.submittedBy || 'Unknown'}</p>
@@ -60,17 +65,19 @@ const ApproveExpenses = () => {
                       onClick={() => handleApproval(expense.id, 'approved')}                    >
                       Approve
                     </button>
-                    <button
+                    <button className='reject'
                       onClick={() => handleApproval(expense.id, 'rejected')}                    >
                       Reject
                     </button>
+                    </div>
                   </div>
                 </div>
               ))
             )}
           </div>
 
-          <button onClick={() => navigate('/manager-dashboard')}>Back to Dashboard</button>
+
+          <button onClick={() => navigate('/manager-dashboard')} className='back-'>Back to Dashboard</button>
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { database } from '../firebase_setup/firebase.js';
 import { collection, getDocs, getDoc, query, onSnapshot, where, updateDoc, doc } from 'firebase/firestore';
+import './styles/Approve-Expenses.css';
 
 const ApproveLeave = () => {
     const [leaveRequests, setLeaveRequests] = useState([]);
@@ -50,6 +51,7 @@ const ApproveLeave = () => {
 
       return (
         <div className="main-container">
+          <div className='background-container'>
           <h2>Approve Leave Requests</h2>
           {status && <p>{status}</p>}
     
@@ -58,6 +60,7 @@ const ApproveLeave = () => {
           ) : (
             leaveRequests.map((request) => (
               <div key={request.id}>
+                <div className="item">
                 <h3>{request.employeeName}</h3>
                 <p><strong>Type:</strong> {request.leaveType}</p>
                 <p><strong>Dates:</strong> {request.startDate} to {request.endDate}</p>
@@ -69,17 +72,19 @@ const ApproveLeave = () => {
                   >
                     Approve
                   </button>
-                  <button
+                  <button className='reject'
                     onClick={() => handleApproval(request.id, 'rejected')}
                   >
                     Reject
                   </button>
+                  </div>
                 </div>
               </div>
             ))
           )}
+        </div>
     
-          <button
+          <button className='back-'
             onClick={() => navigate('/manager-dashboard')}
           >
             Back to Dashboard
