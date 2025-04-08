@@ -3,6 +3,8 @@ import { useNavigate} from 'react-router-dom';
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc,doc,getDoc} from "firebase/firestore";
 import { colors } from '@mui/material';
+import './styles/Submit-Expense.css';
+import fdmLogo from './styles/images/FDMlogo.png';
 
 function SubmitExpense() {
     const navigate = useNavigate();
@@ -53,8 +55,11 @@ function SubmitExpense() {
     };
 
     return (
-        <div style={{textAlign: 'center', padding: '20px' }}>
-            <h2>Submit Expense</h2>
+        <div className='submit-expense-container'>
+            <div className='submit-expense-header'>
+                <img src={fdmLogo} alt="FDM Logo" className="logo"/>
+                <h2>Submit Expense</h2>
+            </div>
             <form onSubmit={handleSubmit} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <div>
                     <label>Amount:</label>
@@ -72,27 +77,23 @@ function SubmitExpense() {
                 </div>
                 <div>
                 <label>Description:</label>
-                <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Enter expense details (e.g., Travel, Meals, etc.)"
-        rows="2" // Initial number of rows
-        style={{
-            width: "100%",
-            resize: "none", // Prevent manual resizing
-            overflow: "hidden", // Prevent scrollbars
-        }}
-        onInput={(e) => {
-            e.target.style.height = "auto"; // Reset height
-            e.target.style.height = `${e.target.scrollHeight}px`; // Adjust height dynamically
-        }}
-        required
-    />
-                </div>
+                <textarea className='description-textarea'
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Enter expense details (e.g., Travel, Meals, etc.)"
+            rows="2" // Initial number of rows
+            onInput={(e) => {
+                e.target.style.height = "auto"; // Reset height
+                e.target.style.height = `${e.target.scrollHeight}px`; // Adjust height dynamically
+            }}
+            required
+            
+        />
+            </div>
                 <button type="submit">Submit</button>
-                <button onClick={() => navigate('/consultant-dashboard')} style={{background:"red"}}>Back to Dashboard</button>
+                <button onClick={() => navigate('/consultant-dashboard')} className='back-button'>Back to Dashboard</button>
             </form>
-        </div>
+            </div>
     );
 }
 

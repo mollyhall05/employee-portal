@@ -68,11 +68,11 @@ form {
     border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
 }
 
 .login-button:hover {
     background-color: #2563eb;
+    width:40%;
 }
 
 .register-link {
@@ -95,5 +95,9 @@ form {
     font-family: "Montserrat", sans-serif;
     width:90%;
     margin-top:1rem;
+}
+
+.nav-button:hover{
+    width:80%;
 }
   

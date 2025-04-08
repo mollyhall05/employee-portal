@@ -102,7 +102,6 @@ function WorkSchedule() {
                 <img src={fdmLogo} alt="FDM Logo" className="logo" />
                 <br/>
                 <h2 className="schedule-title">Work Schedule</h2>
-                <Link to={"/consultant-dashboard"}className="back-link">Back To Dashboard</Link>
             </div>
             <FullCalendar
                 plugins = {[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -127,6 +126,7 @@ function WorkSchedule() {
                 <MenuItem onClick={viewEvent}>View</MenuItem>
                 <MenuItem onClick={deleteEvent}>Delete</MenuItem>
             </Menu>
+            <Link to={"/consultant-dashboard"}className="back-link">Back To Dashboard</Link>
         </div>
     );
 }

@@ -102,13 +102,11 @@ function SubmitLeave() {
                     </div>
 
                     <br />
-                    <button type="submit" onClick={handleSubmit}>Submit</button>
+                    <button type="submit" onClick={handleSubmit} className="submit-button">Submit</button>
                 </form>
             </div>
 
-            <div className="back">
-                <button onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
-            </div>
+                <button onClick={() => navigate('/consultant-dashboard')} className="back">Back to Dashboard</button>
         </div>
     );
 }

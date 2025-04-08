@@ -36,6 +36,12 @@ h2{
     margin-bottom: 1rem;
 }
 
+.back-button:hover{
+    background-color: #bf0706;
+    color: white;
+    width:80%;
+}
+
 .frame-content {   
     font-family: "Montserrat", sans-serif !important;
     }

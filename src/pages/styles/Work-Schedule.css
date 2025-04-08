@@ -5,12 +5,13 @@
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-family: "Montserrat", sans-serif;
+    width:100%;
 
   }
   
   .schedule-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
   }
@@ -30,8 +31,8 @@
     border-radius: 5px;
     font-size: 1rem;
     transition: all 0.3s;
-    height:3rem;
-  }
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;}
   
   .back-link:hover {
     background-color: #3b78e7;
