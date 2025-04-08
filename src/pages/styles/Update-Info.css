@@ -1,0 +1,35 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(200, 200, 200, 0.8);
+    border-radius: 4rem;
+    padding: 4rem;
+    font-family: "Montserrat", sans-serif;
+    height:40rem;
+    width:25rem;
+}
+
+.fdm-logo{
+    width:70%;
+}
+
+.profile-title{
+    color:black;
+    font-weight: bold;
+    margin-bottom: 0rem;
+}
+
+.data-change{
+    font-family: "Montserrat", sans-serif;
+    background-color: black;
+}
+
+.change-password{
+    width:60%;
+}
+
+.change-password:hover{
+    width:70%;
+}

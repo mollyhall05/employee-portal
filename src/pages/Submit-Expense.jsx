@@ -92,8 +92,8 @@ function SubmitExpense() {
             
         />
             </div>
-                <button type="submit">Submit</button>
-                <button onClick={() => navigate('/consultant-dashboard')} className='back-button'>Back to Dashboard</button>
+                <button type="submit" className='submit'>Submit</button>
+                <button onClick={() => navigate('/consultant-dashboard')} className='back-'>Back to Dashboard</button>
             </form>
             </div>
     );

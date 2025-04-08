@@ -14,6 +14,15 @@
     width:100%;
 }
 
+.submit{
+    width:30%;
+}
+
+.submit:hover{
+    width: 40%;
+    background-color: #2563eb;
+}
+
 .description-textarea{
     font-family: "Montserrat", sans-serif;
     width: 20rem;
@@ -23,4 +32,16 @@
     background-color: black;
     padding:10px;
     border-radius: 15px;
+}
+
+.back-{
+    background-color: red;
+    width:50%;
+    font-family: "Montserrat", sans-serif;
+
+}
+.back-:hover{
+    background-color: #bf0706;
+    color: white;
+    width:60%;
 }

@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom"; // Added useNavigate import
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import {Menu, MenuItem} from "@mui/material";
-import {database,collection, addDoc, getDocs, deleteDoc, doc, updateDoc} from "../firebase_setup/firebase";
+import {database, collection, addDoc, getDocs, deleteDoc, doc, updateDoc} from "../firebase_setup/firebase";
 import './styles/Work-Schedule.css';
 import fdmLogo from './styles/images/FDMlogo.png';
 
 function WorkSchedule() {
+    const navigate = useNavigate(); // Initialize navigate hook
 
     const [events, setEvents] = useState([
-        {id: 1, title: "Current Day", start: new Date(),Owner: "Unknown User"},
+        {id: 1, title: "Current Day", start: new Date(), Owner: "Unknown User"},
     ]);
 
     const [menu, setMenu] = useState(null)
@@ -23,7 +24,7 @@ function WorkSchedule() {
     useEffect(() => {
         const fetchEvents = async() => {
             const eventSnap = await getDocs(eCollection);
-            const eventList = eventSnap.docs.map(doc => ({ id: doc.id, title: doc.data().title, start: doc.data().start,owner: doc.data().Owner,}))
+            const eventList = eventSnap.docs.map(doc => ({ id: doc.id, title: doc.data().title, start: doc.data().start, owner: doc.data().Owner,}))
             setEvents(eventList);
         };
         fetchEvents();
@@ -38,16 +39,13 @@ function WorkSchedule() {
                 title,
                 start: selectedDate.date.toISOString(),
                 Owner: username
-
             }
             const docRef = await addDoc(eCollection, newEvent);
             setEvents([...events, { id: docRef.id, ...newEvent }]);
         }
     };
 
-
     const renameEvent = async() => {
-
         let newName = prompt("Update event with a suitable name")
 
         if(!newName) return;
@@ -111,12 +109,12 @@ function WorkSchedule() {
                     center: 'title',
                     end: 'prev today next'
                 }}
+                className='calendar'
                 events = {events}
                 dateClick = {inputEvent}
                 eventClick = {(event) => menuOpen(event.jsEvent, event)}
             />
             <Menu
-
                 anchorReference="anchorPosition"
                 anchorPosition ={menu ? {top: menu.mouseY, left: menu.mouseX } : undefined}
                 open = {Boolean(menu)}
@@ -126,7 +124,9 @@ function WorkSchedule() {
                 <MenuItem onClick={viewEvent}>View</MenuItem>
                 <MenuItem onClick={deleteEvent}>Delete</MenuItem>
             </Menu>
-            <Link to={"/consultant-dashboard"}className="back-link">Back To Dashboard</Link>
+            <div style={{marginTop: '20px'}}>
+                <button className='back-' onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
+            </div>
         </div>
     );
 }

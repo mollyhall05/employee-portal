@@ -60,7 +60,7 @@ form {
 }
 
 .login-button {
-    width: 80%;
+    width: 30%;
     background-color: #3b82f6;
     color: white;
     padding: 0.75rem;
@@ -93,11 +93,11 @@ form {
 .nav-button{
     background: rgba(59, 130, 246, 0.95);
     font-family: "Montserrat", sans-serif;
-    width:90%;
+    width:82%;
     margin-top:1rem;
 }
 
 .nav-button:hover{
-    width:80%;
+    width:95%;
 }
   

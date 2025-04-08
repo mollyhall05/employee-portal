@@ -9,6 +9,9 @@
 
   }
   
+.logo{
+  width:50%;
+}
   .schedule-header {
     display: flex;
     justify-content: center;
@@ -85,8 +88,17 @@
   .fc-daygrid-day.fc-day-today {
     background-color: rgba(66, 133, 244, 0.1);
   }
-  
-  /* Menu styling override */
-  .MuiMenuItem-root {
-    font-size: 0.95rem !important;
-  }
+
+
+.back-{
+  width:40%;
+}
+
+.back-:hover{
+  width:20%;
+}
+
+
+.fc-button:hover{
+  width:auto;
+}

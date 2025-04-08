@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import './styles/Update-Info.css'
+import fdmLogo from './styles/images/FDMlogo.png'
 
 const DisplayInfo = () => {
 	const navigate = useNavigate();
@@ -137,180 +139,182 @@ const DisplayInfo = () => {
 	};
 
 	return (
-		<div className="main-container">
-			<h2>Profile</h2>
-			<form
-				onSubmit={handleSave}
-				style={{ margin: "0 auto", textAlign: "left" }}
-			>
-				<div
-					style={{
-						marginBottom: "10px",
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "space-between",
-						padding: "0.5rem",
-						gap: "0.5rem"
-					}}
+		<div className="update-info">
+			<div className="form"> 
+				<img src={fdmLogo} alt="FDM Logo" className="fdm-logo" />				
+				<h2 className="profile-title">Profile</h2>
+				<form
+					onSubmit={handleSave}
 				>
-					<label>Name:</label>
-					<input
-						type="text"
-						name="name"
-						value={personalInfo.name}
-						onChange={handleChange}
-						required
-						disabled={!isEdit}
+					<div
 						style={{
-							width: "100%",
-							padding: "8px",
-							boxSizing: "border-box",
-							overflow: "hidden", // Hide overflowing text
-							textOverflow: "ellipsis", // Add ellipsis for overflowing text
-							whiteSpace: "nowrap", // Prevent text from wrapping
+							marginBottom: "10px",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "space-between",
+							padding: "0.5rem",
+							gap: "0.5rem"
 						}}
-					/>
-					<label>Username:</label>
-					<input
-						type="text"
-						name="username"
-						value={personalInfo.username}
-						onChange={handleChange}
-						required
-						disabled={!isEdit}
-						style={{
-							width: "100%",
-							padding: "8px",
-							boxSizing: "border-box",
-							overflow: "hidden", // Hide overflowing text
-							textOverflow: "ellipsis", // Add ellipsis for overflowing text
-							whiteSpace: "nowrap", // Prevent text from wrapping
-						}}
+					>
+						<label>Name:</label>
+						<input className='data-change'
+							type="text"
+							name="name"
+							value={personalInfo.name}
+							onChange={handleChange}
+							required
+							disabled={!isEdit}
+							style={{
+								width: "100%",
+								padding: "8px",
+								boxSizing: "border-box",
+								overflow: "hidden", // Hide overflowing text
+								textOverflow: "ellipsis", // Add ellipsis for overflowing text
+								whiteSpace: "nowrap", // Prevent text from wrapping
+							}}
 						/>
-				</div>
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "space-between",
-						padding: "2rem",
-						gap: "0.5rem",
-					}}
-				>
-					<label>Email:</label>
-					<input
-						type="email"
-						name="email"
-						value={personalInfo.email}
-						onChange={handleChange}
-						required
-						disabled={!isEdit}
+						<label>Username:</label>
+						<input className='data-change'
+							type="text"
+							name="username"
+							value={personalInfo.username}
+							onChange={handleChange}
+							required
+							disabled={!isEdit}
+							style={{
+								width: "100%",
+								padding: "8px",
+								boxSizing: "border-box",
+								overflow: "hidden", // Hide overflowing text
+								textOverflow: "ellipsis", // Add ellipsis for overflowing text
+								whiteSpace: "nowrap", // Prevent text from wrapping
+							}}
+							/>
+					</div>
+					<div
 						style={{
-							width: "100%",
-							padding: "8px",
-							boxSizing: "border-box",
-							overflow: "hidden", // Hide overflowing text
-							textOverflow: "ellipsis", // Add ellipsis for overflowing text
-							whiteSpace: "nowrap", // Prevent text from wrapping
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "space-between",
+							padding: "2rem",
+							gap: "0.5rem",
 						}}
-					/>
-					<label>Phone Number:</label>
-					<input
-						type="text"
-						name="phone_number"
-						value={personalInfo.phone_number}
-						onChange={handleChange}
-						required
-						disabled={!isEdit}
-						style={{
-							width: "100%",
-							padding: "8px",
-							boxSizing: "border-box",
-							overflow: "hidden", // Hide overflowing text
-							textOverflow: "ellipsis", // Add ellipsis for overflowing text
-							whiteSpace: "nowrap", // Prevent text from wrapping
-						}}
-					/>
-				</div>
-
-				{isPasswordEdit && (
-					<>
-						<div style={{ marginBottom: "10px" }}>
-							<label>Old Password:</label>
-							<input
-								type="password"
-								name="OldPassword"
-								onChange={handlePasswordChange}
-								disabled={!isPasswordEdit}
-								style={{
-									width: "100%",
-									padding: "8px",
-									boxSizing: "border-box",
-								}}
-							/>
-						</div>
-						<div style={{ marginBottom: "10px" }}>
-							<label>New Password:</label>
-							<input
-								type="password"
-								name="newPassword"
-								onChange={handlePasswordChange}
-								disabled={!isPasswordEdit}
-								style={{
-									width: "100%",
-									padding: "8px",
-									boxSizing: "border-box",
-								}}
-							/>
-						</div>
-						<div style={{ marginBottom: "10px" }}>
-							<label>Confirm Password:</label>
-							<input
-								type="password"
-								name="confirmPassword"
-								onChange={handlePasswordChange}
-								disabled={!isPasswordEdit}
-								style={{
-									width: "100%",
-									padding: "8px",
-									boxSizing: "border-box",
-								}}
-							/>
-						</div>
-					</>
-				)}
-
-				{!isPasswordEdit && (
-					<button
-						type="button"
-						onClick={() => setIsEdit(!isEdit)}
-						style={{ padding: "10px 20px", margin: "5px" }}
 					>
-						{isEdit ? "Cancel" : "Edit"}
-					</button>
-				)}
+						<label>Email:</label>
+						<input className='data-change'
+							type="email"
+							name="email"
+							value={personalInfo.email}
+							onChange={handleChange}
+							required
+							disabled={!isEdit}
+							style={{
+								width: "100%",
+								padding: "8px",
+								boxSizing: "border-box",
+								overflow: "hidden", // Hide overflowing text
+								textOverflow: "ellipsis", // Add ellipsis for overflowing text
+								whiteSpace: "nowrap", // Prevent text from wrapping
+							}}
+						/>
+						<label>Phone Number:</label>
+						<input className='data-change'
+							type="text"
+							name="phone_number"
+							value={personalInfo.phone_number}
+							onChange={handleChange}
+							required
+							disabled={!isEdit}
+							style={{
+								width: "100%",
+								padding: "8px",
+								boxSizing: "border-box",
+								overflow: "hidden", // Hide overflowing text
+								textOverflow: "ellipsis", // Add ellipsis for overflowing text
+								whiteSpace: "nowrap", // Prevent text from wrapping
+							}}
+						/>
+					</div>
 
-				{!isPasswordEdit && (
-					<button
-						type="button"
-						onClick={() => {
-							setIsPasswordEdit(true);
-							setIsEdit(false);
-						}}
-						style={{ padding: "10px 20px", margin: "5px" }}
-					>
-						Change Password
-					</button>
-				)}
+					{isPasswordEdit && (
+						<>
+							<div style={{ marginBottom: "10px" }}>
+								<label>Old Password:</label>
+								<input
+									type="password"
+									name="OldPassword"
+									onChange={handlePasswordChange}
+									disabled={!isPasswordEdit}
+									style={{
+										width: "100%",
+										padding: "8px",
+										boxSizing: "border-box",
+									}}
+								/>
+							</div>
+							<div style={{ marginBottom: "10px" }}>
+								<label>New Password:</label>
+								<input
+									type="password"
+									name="newPassword"
+									onChange={handlePasswordChange}
+									disabled={!isPasswordEdit}
+									style={{
+										width: "100%",
+										padding: "8px",
+										boxSizing: "border-box",
+									}}
+								/>
+							</div>
+							<div style={{ marginBottom: "10px" }}>
+								<label>Confirm Password:</label>
+								<input
+									type="password"
+									name="confirmPassword"
+									onChange={handlePasswordChange}
+									disabled={!isPasswordEdit}
+									style={{
+										width: "100%",
+										padding: "8px",
+										boxSizing: "border-box",
+									}}
+								/>
+							</div>
+						</>
+					)}
 
-				{isPasswordEdit || isEdit ? (
-					<button type="submit" style={{ padding: "10px 20px", margin: "5px" }}>
-						Save
-					</button>
-				) : null}
-			</form>
+					{!isPasswordEdit && (
+						<button
+							type="button"
+							onClick={() => setIsEdit(!isEdit)}
+							className="submit"
+						>
+							{isEdit ? "Cancel" : "Edit"}
+						</button>
+					)}
+
+					{!isPasswordEdit && (
+						<button
+							type="button"
+							onClick={() => {
+								setIsPasswordEdit(true);
+								setIsEdit(false);
+							}}
+							className="change-password"
+						>
+							Change Password
+						</button>
+					)}
+
+					{isPasswordEdit || isEdit ? (
+						<button type="submit" className="submit">
+							Save
+						</button>
+					) : null}
+				</form>
+			</div>
 			<div style={{marginTop: '20px'}}>
-                <button onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
+                <button className='back-' onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
             </div>
 		</div>
 	);
