@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { database } from "../firebase_setup/firebase.js";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+
 const DisplayInfo = () => {
 	const navigate = useNavigate();
 	const [personalInfo, setPersonalInfo] = useState(null);
@@ -136,7 +137,7 @@ const DisplayInfo = () => {
 	};
 
 	return (
-		<div style={{ textAlign: "center" }}>
+		<div className="main-container">
 			<h2>Profile</h2>
 			<form
 				onSubmit={handleSave}
@@ -146,9 +147,10 @@ const DisplayInfo = () => {
 					style={{
 						marginBottom: "10px",
 						display: "flex",
+						flexDirection: "column",
 						justifyContent: "space-between",
-						padding: "2rem",
-						gap: "1rem",
+						padding: "0.5rem",
+						gap: "0.5rem"
 					}}
 				>
 					<label>Name:</label>
@@ -188,11 +190,11 @@ const DisplayInfo = () => {
 				</div>
 				<div
 					style={{
-						marginBottom: "10px",
 						display: "flex",
+						flexDirection: "column",
 						justifyContent: "space-between",
 						padding: "2rem",
-						gap: "1rem",
+						gap: "0.5rem",
 					}}
 				>
 					<label>Email:</label>

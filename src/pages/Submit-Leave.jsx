@@ -12,6 +12,7 @@ function SubmitLeave() {
     const [leaveType, setLeaveType] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [reason, setReason] = useState('');
 
     useEffect(() => {
         const userData = localStorage.getItem("user");
@@ -31,7 +32,7 @@ function SubmitLeave() {
             alert('Start date cannot be after end date');
             return;
         }
-        const userID = userData.id; // Assuming EmployeeID is stored in localStorage
+        const userID = userData.id;
         try {
             console.log('User ID:', userID);
             const LeaveRequests = doc(database, 'LeaveRequests', userID);
@@ -46,6 +47,7 @@ function SubmitLeave() {
                 leaveType: leaveType,
                 startDate: startDate,
                 endDate: endDate,
+                reason: reason,
                 status: 'Pending',
             });
             alert('Leave request submitted successfully!');
@@ -102,7 +104,18 @@ function SubmitLeave() {
                     </div>
 
                     <br />
-                    <button type="submit" onClick={handleSubmit} className="submit-button">Submit</button>
+                    <div>
+                        <label>Reason for Leave: </label>
+                        <textarea
+                            value={reason}
+                            onChange={(e) => setReason(e.target.value)}
+                            required
+                            rows="3"
+                        />
+                    </div>
+
+                    <br />
+                    <button type="submit" onClick={handleSubmit}>Submit</button>
                 </form>
             </div>
 

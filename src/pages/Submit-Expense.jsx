@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { database } from "../firebase_setup/firebase.js";
 import { collection, addDoc,doc,getDoc} from "firebase/firestore";
 import { colors } from '@mui/material';
@@ -42,7 +42,9 @@ function SubmitExpense() {
                 userID: userID,
                 amount: amount,
                 description: description,
-                status: 'Pending',
+                status: 'pending',
+                submittedAt: new Date().toISOString(),
+                submittedBy: userData?.name || 'Unknown'
             });
             alert('Expense request submitted successfully!');
             navigate('/consultant-dashboard'); // Redirect to dashboard after successful submission

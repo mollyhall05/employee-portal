@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { database } from '../firebase_setup/firebase.js';
-import { collection, getDocs, query, onSnapshot, where, updateDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, getDoc, query, onSnapshot, where, updateDoc, doc } from 'firebase/firestore';
 
 const ApproveLeave = () => {
     const [leaveRequests, setLeaveRequests] = useState([]);
@@ -17,7 +17,17 @@ const ApproveLeave = () => {
                     id: doc.id,
                     ...doc.data(),
                 }));
-                setLeaveRequests(leaves);
+
+                const leavesWithNames = await Promise.all(leaves.map(async (leave)=> {
+                  const employeeDoc = await getDoc(doc(database, 'Employees', leave.userID));
+                  const employeeName = employeeDoc.exists() ? employeeDoc.data().name : 'Unknown';
+                  return {
+                      ...leave,
+                      employeeName: employeeName,
+                  };
+                }))
+
+                setLeaveRequests(leavesWithNames);
             } catch (error) {
                 console.error('Error fetching leave requests:', error);
                 setStatus('Error fetching leave requests');
@@ -39,7 +49,7 @@ const ApproveLeave = () => {
       };
 
       return (
-        <div style={{ backgroundColor: 'white'}}>
+        <div className="main-container">
           <h2>Approve Leave Requests</h2>
           {status && <p>{status}</p>}
     
