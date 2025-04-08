@@ -38,7 +38,7 @@
 
 .Logout{
     background-color: red;
-    color: white;
+    color: black;
     width:10rem;
     border-radius: 20px;
 
@@ -46,5 +46,4 @@
 
 .Logout:hover{
     background-color: #bf0706;
-    color: white;
 }

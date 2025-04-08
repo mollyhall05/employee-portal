@@ -1,17 +1,21 @@
-.main-container {
+.notifs {
     margin: 0 auto;
     padding: 2rem;
     background: rgba(200, 200, 200, 0.8);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-family: "Montserrat", sans-serif;
-    min-width: 85%;
+    min-width: 25rem;
 }
 
 .header {
     display: flex;
     justify-content: space-around;
     margin-bottom: 2rem;
+}
+
+.logo{
+    width:15rem;
 }
 
 ul {
@@ -25,4 +29,8 @@ ul {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     margin-bottom: 1rem;
+}
+
+.loading{
+    height:100px;
 }

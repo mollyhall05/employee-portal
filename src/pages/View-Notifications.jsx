@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { database as db} from '../firebase_setup/firebase.js';
 import { getDocs, collection } from 'firebase/firestore';
 import './styles/View-Notifications.css';
+import fdmLogo from "./styles/images/FDMlogo.png"
+import loading_icon from "./styles/images/loading_icon.gif"
 
 const Notifications = () => {
     const [notifications, setNotifications] = useState([]);
@@ -30,12 +32,14 @@ const Notifications = () => {
         fetchNotifications();
     }, []);
 
-    if (loading) return <p>Loading notifications...</p>;
+    if (loading) return <img src={loading_icon} alt="Loading"/>  ;
     if (error) return <p>Error loading notifications: {error.message}</p>;
     if (notifications.length === 0) return <p>No notifications available.</p>;
 
     return (
         <div className="main-container">
+            <div className='notifs'> 
+            <img src={fdmLogo} alt="FDM Logo" className="logo" />            
             <h2 className="header">Notifications</h2>
             {notifications.length === 0 ? (
                 <p>No notifications at the moment.</p>
@@ -49,10 +53,12 @@ const Notifications = () => {
                     ))}
                 </ul>
             )}
+            </div>
 
-            <button onClick={() =>navigate("/consultant-dashboard")} style={{marginTop: "20px"}}>
+            <button onClick={() =>navigate("/consultant-dashboard")} className='back-'>
                 Back to Dashboard
             </button>
+
         </div>
     );
 };
