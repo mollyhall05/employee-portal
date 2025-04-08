@@ -32,7 +32,7 @@ const PostNotification = () => {
     };
 
     return (
-        <div style={{backgroundColor: 'white'}}>
+        <div className="main-container">
           <h2>Post a New Notification</h2>
     
           <form onSubmit={handleSubmit} className="space-y-4">

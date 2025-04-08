@@ -4,9 +4,8 @@
     align-items: center;
     justify-content: center;
     background: rgba(200, 200, 200, 0.8);
-    height:38rem;
-    width:26rem;
     border-radius: 4rem;
+    padding: 2rem;
     font-family: "Montserrat", sans-serif;
 }
 
