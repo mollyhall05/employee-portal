@@ -313,7 +313,7 @@ const DisplayInfo = () => {
 					) : null}
 				</form>
 			</div>
-			<div style={{marginTop: '20px'}}>
+			<div style={{padding: "5rem"}}>
                 <button className='back-' onClick={() => navigate('/consultant-dashboard')}>Back to Dashboard</button>
             </div>
 		</div>
