@@ -48,8 +48,11 @@ function WorkSchedule() {
     const renameEvent = async() => {
         let newName = prompt("Update event with a suitable name")
 
-        if(!newName) return;
-
+        if(!newName){
+            alert("Please enter a valid name")
+            menuClose();
+            return;
+        }
         const eventId = selectedEvent.event.id;
 
         await updateDoc(doc(database, "events", eventId), {title: newName })
